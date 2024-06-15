@@ -6,7 +6,8 @@ import micSVG from "../icons/mic.svg";
 import pauseSVG from "../icons/pause.svg";
 import resumeSVG from "../icons/play.svg";
 import saveSVG from "../icons/save.svg";
-import discardSVG from "../icons/stop.svg";
+import stopSVG from "../icons/stop.svg";
+import discardSVG from "../icons/discard.svg";
 import "../styles/audio-recorder.css";
 
 const LiveAudioVisualizer = React.lazy(async () => {
@@ -115,11 +116,7 @@ const AudioRecorder: (props: Props) => ReactElement = ({
   };
 
   useEffect(() => {
-    if (
-      (shouldSave || recorderControls) &&
-      recordingBlob != null &&
-      onRecordingComplete != null
-    ) {
+    if (shouldSave && recordingBlob != null && onRecordingComplete != null) {
       onRecordingComplete(recordingBlob);
       if (downloadOnSavePress) {
         void downloadBlob(recordingBlob);
@@ -143,6 +140,17 @@ const AudioRecorder: (props: Props) => ReactElement = ({
         data-testid="ar_mic"
         title={isRecording ? "Save recording" : "Start recording"}
       />
+      {isRecording && (
+        <img
+          src={discardSVG}
+          className={`audio-recorder-options ${
+            !isRecording ? "display-none" : ""
+          } ${classes?.AudioRecorderDiscardClass ?? ""}`}
+          onClick={() => stopAudioRecorder(false)}
+          title="Discard Recording"
+          data-testid="ar_cancel"
+        />
+      )}
       <span
         className={`audio-recorder-timer ${
           !isRecording ? "display-none" : ""
@@ -194,12 +202,12 @@ const AudioRecorder: (props: Props) => ReactElement = ({
         data-testid="ar_pause"
       />
       <img
-        src={discardSVG}
+        src={stopSVG}
         className={`audio-recorder-options ${
           !isRecording ? "display-none" : ""
         } ${classes?.AudioRecorderDiscardClass ?? ""}`}
-        onClick={() => stopAudioRecorder(false)}
-        title="Discard Recording"
+        onClick={() => stopAudioRecorder(true)}
+        title="Stop Recording"
         data-testid="ar_cancel"
       />
     </div>

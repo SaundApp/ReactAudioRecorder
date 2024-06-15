@@ -43,14 +43,10 @@
     }
   },
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src/**/*.ts{,x}",
-    "lint:fix": "npm run lint -- --fix",
-    "test": "vitest",
-    "storybook": "start-storybook -p 6006 --no-manager-cache",
-    "build-storybook": "build-storybook"
+    "lint:fix": "npm run lint -- --fix"
   },
   "peerDependencies": {
     "react": ">=16.2.0",
@@ -59,17 +55,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-vite": "^0.2.2",
-    "@storybook/react": "^7.4.6",
-    "@storybook/testing-library": "^0.0.13",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^29.0.0",
+    "@types/node": "^20.11.17",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.35.1",

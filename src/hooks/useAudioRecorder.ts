@@ -51,7 +51,7 @@ const useAudioRecorder: (
   const [isPaused, setIsPaused] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
-  const [timerInterval, setTimerInterval] = useState<NodeJS.Timer>();
+  const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout>();
   const [recordingBlob, setRecordingBlob] = useState<Blob>();
 
   const _startTimer: () => void = useCallback(() => {
