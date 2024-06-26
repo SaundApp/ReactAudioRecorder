@@ -86,7 +86,7 @@ const AudioRecorder: (props: Props) => ReactElement = ({
     await ffmpeg.run("-i", inputName, outputName);
 
     const outputData = ffmpeg.FS("readFile", outputName);
-    const outputBlob = new Blob([outputData.buffer], {
+    const outputBlob = new Blob([outputData.buffer as any], {
       type: `audio/${downloadFileExtension}`,
     });
 
