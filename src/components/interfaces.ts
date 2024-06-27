@@ -1,4 +1,4 @@
-import {
+import type {
   MediaAudioTrackConstraints,
   recorderControls,
 } from "../hooks/useAudioRecorder";
@@ -40,7 +40,7 @@ export interface Props {
    * This gets called when the getUserMedia Promise is rejected.
    * It takes the resultant DOMException as its parameter.
    **/
-  onNotAllowedOrFound?: (exception: DOMException) => any;
+  onNotAllowedOrFound?: (exception: DOMException) => void;
   /**
    * Allows calling of hook outside this component. The controls returned by the hook can then be passed to the component using this prop.
    * This allows for use of hook methods and state outside this component

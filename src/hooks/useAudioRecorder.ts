@@ -40,7 +40,7 @@ export type MediaAudioTrackConstraints = Pick<
  */
 const useAudioRecorder: (
   audioTrackConstraints?: MediaAudioTrackConstraints,
-  onNotAllowedOrFound?: (exception: DOMException) => any,
+  onNotAllowedOrFound?: (exception: DOMException) => void,
   mediaRecorderOptions?: MediaRecorderOptions
 ) => recorderControls = (
   audioTrackConstraints,
@@ -51,14 +51,14 @@ const useAudioRecorder: (
   const [isPaused, setIsPaused] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder>();
-  const [timerInterval, setTimerInterval] = useState<NodeJS.Timeout>();
+  const [timerInterval, setTimerInterval] = useState<Timer>();
   const [recordingBlob, setRecordingBlob] = useState<Blob>();
 
   const _startTimer: () => void = useCallback(() => {
     const interval = setInterval(() => {
       setRecordingTime((time) => time + 1);
     }, 1000);
-    setTimerInterval(interval as any);
+    setTimerInterval(interval);
   }, [setRecordingTime, setTimerInterval]);
 
   const _stopTimer: () => void = useCallback(() => {
@@ -94,6 +94,7 @@ const useAudioRecorder: (
         console.log(err.name, err.message, err.cause);
         onNotAllowedOrFound?.(err);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     timerInterval,
     setIsRecording,
@@ -134,6 +135,7 @@ const useAudioRecorder: (
       _stopTimer();
       mediaRecorder?.pause();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mediaRecorder, setIsPaused, _startTimer, _stopTimer]);
 
   return {
