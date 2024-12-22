@@ -62,7 +62,10 @@ const useAudioRecorder: (
   }, [setRecordingTime, setTimerInterval]);
 
   const _stopTimer: () => void = useCallback(() => {
-    timerInterval != null && clearInterval(timerInterval);
+    if (timerInterval != null) {
+      clearInterval(timerInterval);
+    }
+
     setTimerInterval(undefined);
   }, [timerInterval, setTimerInterval]);
 
@@ -94,7 +97,7 @@ const useAudioRecorder: (
         console.log(err.name, err.message, err.cause);
         onNotAllowedOrFound?.(err);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     timerInterval,
     setIsRecording,
@@ -135,7 +138,7 @@ const useAudioRecorder: (
       _stopTimer();
       mediaRecorder?.pause();
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mediaRecorder, setIsPaused, _startTimer, _stopTimer]);
 
   return {

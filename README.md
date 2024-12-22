@@ -67,7 +67,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 | **`onNotAllowedOrFound`** | This gets called when the `getUserMedia` promise is rejected. It takes the resultant `DOMException` as its parameter | N/A | Yes
 | **`downloadOnSavePress`**  | A `boolean` value that determines if the recording should be downloaded when "Save recording" option is pressed | `false` | Yes |
 | **`downloadFileExtension`**  | The file extension to be used for the downloaded file. Allowed values are `webm`, `mp3` and `wav`. In order to use `mp3` or `wav` please ensure that your website is [cross-origin isolated](https://web.dev/cross-origin-isolation-guide/). [Further reading](https://web.dev/coop-coep/) | `webm` | Yes |
-| **`showVisualizer`**  | Displays a waveform visualization for the audio when set to `true` | `false` | Yes |
 | **`classes`** | This allows class names to be passed to modify the styles for the entire component or specific portions of it | N/A | Yes |
 
 **NOTE: In order for `mp3` and `wav` downloading to work properly, your website needs to be [cross-origin isolated](https://web.dev/cross-origin-isolation-guide/). This is necessary because this package uses [FFmpeg](https://www.npmjs.com/package/@ffmpeg/ffmpeg) which internally uses `SharedArrayBuffer` that requires cross-origin isolation**

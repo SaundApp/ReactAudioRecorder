@@ -19,7 +19,6 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       //   echoCancellation: true,
       // }} 
       onNotAllowedOrFound={(err) => console.table(err)}
-      showVisualizer={true}
       downloadOnSavePress
       downloadFileExtension="mp3"
     />
